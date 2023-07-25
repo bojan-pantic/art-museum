@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <div class="row">
+        <div class="col-3">
+          <form [formGroup]="form">
+            <input formControlName="author" type="text" placeholder="Author" />
+          </form>
+        </div>
+        <div class="col-1">
+          <button class="btn btn-dark" (click)="onSearch()">Search</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <button (click)="onDoneClicked()" class="btn btn-dark float-end">
+        Done
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <form [formGroup]="sortForm">
+        <div class="form-group">
+          <label for="location">Sort</label>
+          <select
+            formControlName="sort"
+            name="sort"
+            id="sort"
+            class="form-control"
+          >
+            <option value="asc">Rastuce</option>
+            <option value="desc">Opadajuce</option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="col-2">
+      <button (click)="onSort()" class="btn btn-dark">Sortiraj</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <table class="table">
+        <thead>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col"></th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let art of nonExibitionArtworks">
+            <td>{{ art.title }}</td>
+            <td>{{ art.author }}</td>
+            <td>
+              <button (click)="onAddClicked(art)" class="btn btn-dark">
+                Add
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-6">
+      <table class="table">
+        <thead>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col"></th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let art of exibitionArtworks">
+            <td>{{ art.title }}</td>
+            <td>{{ art.author }}</td>
+            <td>
+              <button (click)="onRemoveClicked(art)" class="btn btn-dark">
+                Remove
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

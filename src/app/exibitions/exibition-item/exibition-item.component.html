@@ -1,0 +1,12 @@
+<div class="card">
+  <h3 [routerLink]="['/exibition', exibition._id]">{{ exibition.title }}</h3>
+  <div class="card-body">
+    <p>{{ exibition.location.site }}, {{ exibition.location.room }}</p>
+    <small>{{ exibition.description }}</small>
+  </div>
+  <div class="card-fotter" *ngIf="shouldRenderButton">
+    <button (click)="onEditClicked()" class="btn btn-dark float-end">
+      Edit
+    </button>
+  </div>
+</div>

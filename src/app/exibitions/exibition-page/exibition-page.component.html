@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <app-exibition-item
+      [shouldRenderButton]="shouldRenderEditButton"
+      [exibition]="exibition"
+      (editClicked)="onEditClicked()"
+    ></app-exibition-item>
+  </div>
+  <div *ngIf="shouldRenderEditButton" class="row">
+    <div *ngFor="let artwork of exibitionArtworks" class="col-6">
+      <app-artwork-item [artwork]="artwork"></app-artwork-item>
+    </div>
+  </div>
+  <div *ngIf="!shouldRenderEditButton" class="row">
+    <app-artwork-edit
+      [exibitionArtworks]="exibitionArtworks"
+      [nonExibitionArtworks]="nonExibitionArtworks"
+      (doneClicked)="onDoneClicked()"
+      (search)="onSearch($event)"
+      (removeArtwork)="onRemoveArtwork($event)"
+      (addArtwork)="onAddArtwork($event)"
+      (sort)="onSort($event)"
+    ></app-artwork-edit>
+  </div>
+</div>
